@@ -1,27 +1,31 @@
 #!/bin/bash
 
-echo Insert project name:
+echo "Installing Script v0.1"
+echo "Warning, this installing script is quite bad, non reversable, and may mess with other files in this folder. Before running it make sure only the repo files are in the current folder"
+echo ""
+echo "Insert project name:"
 read prjname
 
 main_name=$prjname"_main"
 settings_name=$prjname"_settings"
 commands_name=$prjname"_commands"
 flags_name=$prjname"_flags"
-
+	
+echo "  changing files name"
 mv main.tex $main_name".tex"
 mv mysettings.tex $settings_name".tex"
 mv mycommands.tex $commands_name".tex"
 mv myflags.tex $flags_name".tex"
 
-
-
+echo "  running sed to adjust inner references"
 for file in *.tex sections/*
 do
-	echo $file
-	sed "s/main/$main_name/g" $file
-	sed "s/settings/$settings_name/g" $file
-	sed "s/commands/$commands_name/g" $file
-	sed "s/flags/$flags_name/g" $file
+	sed -i "s/main/$main_name/g" $file
+	sed -i "s/mysettings/$settings_name/g" $file
+	sed -i "s/mycommands/$commands_name/g" $file
+	sed -i "s/myflags/$flags_name/g" $file
 done
 
-#git submodule add https://github.com/cryptobib/export cryptobib
+echo "  cloning submodules"
+git submodule add https://github.com/cryptobib/export cryptobib
+echo "done"
