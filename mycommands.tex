@@ -1,0 +1,80 @@
+% !TeX spellcheck = en_GB
+% !TeX root = main.tex
+% EG - my personal command
+
+	%logic
+\newcommand*{\ra}{\: \Rightarrow \:}			%implication
+\newcommand*{\lra}{\: \Leftrightarrow \:}		%iff
+
+	%textstyle
+\newcommand{\EG}[1]{
+	\ifComments
+		\textcolor{blue}{(\textbf{EG: #1})}
+	\fi} 										%Emanuele's Comment
+\newcommand{\IC}[1]{
+	\ifComments
+		\textcolor{red}{(\textbf{IC: #1})}
+	\fi} 										%Ignacio's Comment
+\newcommand*{\cd}[1]{ \mathsf{#1} }				%sans serif mode, for code
+\newcommand{\fullorshort}[2]{					
+	\ifFullVersion%
+		#1%
+	\else%
+		#2%
+	\fi%
+	}
+\newcommand{\fullversion}[1]{\fullorshort{#1}{}}
+\newcommand{\shortversion}[1]{\fullorshort{}{#1}}
+
+	%algebra
+\newcommand*{\trs}{\top}								%transpose of a vector, matrix
+\newcommand*{\vc}[1]{\mathbf{#1}}						%vectors
+\newcommand*{\Ker}{{\mathrm{Ker}}\,}					%kernell
+\renewcommand*{\Im}{{\mathrm{Im}}\,}					%image
+\renewcommand*{\ker}{\Ker}								%making \ker and \Ker synonims
+
+	%sets
+\newcommand*{\G}{\mathbb{G}}							%Group
+\newcommand*{\F}{\mathbb{F}}							%Field
+\newcommand*{\N}{\mathbb{N}}							%Natural Number
+\newcommand*{\range}[1]{{[#1]}}							%integer between 0 and n - 1
+	\newcommand*{\RSverbose}[3]{\cd{RS}_{{#1}, {#2}, {#3}}}	%Reed Solomon code (specifing the field)
+	\newcommand*{\RS}[2]{\cd{RS}_{{#1}, {#2}}}				%Reed Solomon code
+
+	%operators & predicates
+\newcommand*{\ceq}{==}									%check equality
+\newcommand*{\rto}{\prescript{\$}{}{\to}}				%sample from a set, random return
+\newcommand*{\rgets}{\gets^{\$}}						%value returned involving randomness
+\renewcommand*{\sample}{\rgets}							%override of Cryptocode sample
+\newcommand*{\checkeq}{\stackrel{?}{=}}
+\newcommand*{\chequiv}{\stackrel{?}{\equiv}}
+\newcommand*{\checkless}{\stackrel{?}{<}}
+\newcommand*{\cheqless}{\stackrel{?}{\leq}}
+
+	%distances and weights
+\newcommand{\hd}{d}										%hamming distance
+\newcommand{\hw}[1]{\left\lVert#1\right\rVert}			%hamming weight
+
+	%probability\events
+\renewcommand*{\prob}[1]{ \Pr \left[ #1 \right] }		%probability
+
+	%parameters
+\renewcommand*{\sk}{\cd{sk}}							%secret key
+\renewcommand*{\pk}{\cd{pk}}							%public key
+\newcommand*{\msk}{\cd{msk}}							%master secret key
+\newcommand*{\mpk}{\cd{mpk}}							%master public key
+\newcommand*{\ppm}{\cd{pp}}								%public parameter
+\newcommand*{\spm}{\cd{sp}}								%secret parameter
+\newcommand*{\secp}{\lambda}							%security parameter
+
+	%unit of measurement
+\newcommand*{\byte}{\mathrm{B}}
+\newcommand*{\KB}{\mathrm{KB}}
+\newcommand*{\MB}{\mathrm{MB}}
+\newcommand*{\GB}{\mathrm{GB}}
+	
+	%Wrong things that just work [use at your own risk]
+\newcommand*{\pcextraspace}{\pcskipln \\[-12px]}		%add inline space in cryptocode pseudocode
+\newcommand*{\prextraspace}{\\[-12px]}					%add inline space in cryptocode protocols
+\newcommand*{\midtall}{\phantom{\Big|} \!\!}			%forces higher brakets in equations
+

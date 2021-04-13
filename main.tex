@@ -1,0 +1,57 @@
+%!TeX spellcheck = en_GB
+
+	% Import Flags
+\input{myflags.tex}
+
+	%document class
+\ifFullVersion
+	\documentclass[11pt]{llncs}
+	\usepackage{fullpage}
+\else
+	\documentclass{llncs}
+	\pagestyle{plain}
+\fi
+
+	% Import Setting and Commands
+\input{mysettings}
+\input{mycommands}
+
+	% Metadata
+\title{Insert Title Here}
+\date{}
+\ifAnonymous
+	\author{}
+	\institute{}
+\else
+	\author{Author 1\inst{1}, Author 2\inst{1,2}}
+	\institute{
+		Institute 1, University of Region, Country.\\
+		\href{mailto:example@provider.com}
+	\and
+		Institute 2, University of Other Region, Other Country.\\
+		\href{mailto:otherexample@otherprovider.com}
+	}
+\fi
+
+\begin{document}
+
+	%\maketitle compatibile with llncs and toc
+{\def\addcontentsline#1#2#3{}\maketitle}
+
+\shortversion{\vspace{-20pt}}
+
+%\begin{abstract}
+%	\input{sections/abstract.tex}
+%\end{abstract}
+
+\tableofcontents
+\newpage
+
+	%bibliography
+\bibliographystyle{alpha}
+\bibliography{cryptobib/abbrev3,cryptobib/crypto,others}
+
+	%appendix
+\appendix
+
+\end{document}

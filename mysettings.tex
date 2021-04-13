@@ -1,0 +1,74 @@
+% !TeX spellcheck = en_GB
+% !TeX root = main.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+	%math packages
+\usepackage{
+	amsmath,	amssymb,
+	amsfonts,	mathtools}
+
+	%graphic/floats packages
+\usepackage{
+	tikz, 		float,
+	placeins, 	graphicx,
+	graphics,	xcolor} 
+	
+	%text formatting
+\usepackage{
+	verbatim,
+	bm}
+
+	%other
+\usepackage{
+	breakcites,	enumerate,
+	array,		comment}
+
+	
+\usepackage[]{hyperref}
+%\hypersetup{
+%	colorlinks
+%	%allcolors=black
+%	%urlcolor=black
+%}
+
+	%cryptocode
+\usepackage[
+	lambda,			advantage,
+	operators,		sets,
+	adversary,		landau,
+	probability,	notions,
+	logic,			ff,
+	mm,				primitives,
+	events,			complexity,
+	asymptotics,	keys
+	]{cryptocode}
+
+	% set how far in the sub[n]subsection the Table of Contents will go
+\setcounter{tocdepth}{2}
+
+	% Patch of the Toc Bug for llnc %
+\makeatletter
+\renewcommand*\l@section[2]
+{%
+	\ifnum \c@tocdepth >\z@
+	\addpenalty \@secpenalty
+	\addvspace {1.0em \@plus \p@ }%
+	\setlength \@tempdima {1.5em}%
+	\begingroup
+	\parindent \z@
+	\rightskip \@pnumwidth
+	\parfillskip -\@pnumwidth
+	\leavevmode \bfseries
+	\advance \leftskip \@tempdima
+	\hskip -\leftskip
+	#1\nobreak
+	\hfil
+	\nobreak
+	\hb@xt@ \@pnumwidth {\hss #2\kern -\p@ \kern \p@ }%
+	\par
+	\endgroup
+	\fi
+}
+\makeatother
