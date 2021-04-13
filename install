@@ -1,1 +1,27 @@
-git submodule add https://github.com/cryptobib/export cryptobib
+#!/bin/bash
+
+echo Insert project name:
+read prjname
+
+main_name=$prjname"_main"
+settings_name=$prjname"_settings"
+commands_name=$prjname"_commands"
+flags_name=$prjname"_flags"
+
+mv main.tex $main_name".tex"
+mv mysettings.tex $settings_name".tex"
+mv mycommands.tex $commands_name".tex"
+mv myflags.tex $flags_name".tex"
+
+
+
+for file in *.tex sections/*
+do
+	echo $file
+	sed "s/main/$main_name/g" $file
+	sed "s/settings/$settings_name/g" $file
+	sed "s/commands/$commands_name/g" $file
+	sed "s/flags/$flags_name/g" $file
+done
+
+#git submodule add https://github.com/cryptobib/export cryptobib
