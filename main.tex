@@ -1,18 +1,7 @@
 %!TeX spellcheck = en_GB
 
-	% Import Flags
+	% Import Flags, Setting and Commands
 \input{myflags.tex}
-
-	%document class
-\ifFullVersion
-	\documentclass[11pt]{llncs}
-	\usepackage{fullpage}
-\else
-	\documentclass{llncs}
-	\pagestyle{plain}
-\fi
-
-	% Import Setting and Commands
 \input{mysettings}
 \input{mycommands}
 
@@ -40,12 +29,18 @@
 
 \shortversion{\vspace{-20pt}}
 
-%\begin{abstract}
-%	\input{sections/abstract.tex}
-%\end{abstract}
+\begin{abstract}
+	\input{sections/abstract.tex}
+\end{abstract}
 
-\tableofcontents
-\newpage
+\ifTableOfContents
+	\tableofcontents
+	\newpage
+\fi
+
+\section{Introduction}
+	\subsection{A short intro}
+	\input{sections/Introduction.tex}
 
 	%bibliography
 \bibliographystyle{alpha}

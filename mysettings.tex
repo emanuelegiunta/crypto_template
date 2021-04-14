@@ -1,6 +1,15 @@
 % !TeX spellcheck = en_GB
 % !TeX root = main.tex
 
+	%document class
+\ifFullVersion
+	\documentclass[11pt]{llncs}
+	\usepackage{fullpage}
+\else
+	\documentclass{llncs}
+	\pagestyle{plain}
+\fi
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
