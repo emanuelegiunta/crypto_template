@@ -27,7 +27,10 @@ do
 done
 
 echo "  cloning submodules"
-rm -rf cryptobib
+
+if git submodules status | grep -q cryptobib;
+    echo "Error: cryptobib was previously installed in this git repo"
+
 git submodule add https://github.com/cryptobib/export cryptobib
 echo "done"
 
