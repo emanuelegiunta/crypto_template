@@ -27,6 +27,7 @@ do
 done
 
 echo "  cloning submodules"
+rm -rf cryptobib
 git submodule add https://github.com/cryptobib/export cryptobib
 echo "done"
 
