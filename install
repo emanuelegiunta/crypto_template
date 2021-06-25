@@ -25,7 +25,7 @@ echo "  running sed to adjust inner references"
 for file in *.tex sections/*
 do
 	sed -i "s/main/$main_name/g" $file
-	sed -i "s/beamer/$beamer_name/g" $file
+	sed -i "s/mybeamer/$beamer_name/g" $file
 	sed -i "s/mysettings/$settings_name/g" $file
 	sed -i "s/mycommands/$commands_name/g" $file
 	sed -i "s/myflags/$flags_name/g" $file
