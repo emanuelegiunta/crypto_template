@@ -7,29 +7,35 @@ echo "Insert project name:"
 read prjname
 
 main_name=$prjname"_main"
+beamer_name=$prjname"_beamer"
 settings_name=$prjname"_settings"
 commands_name=$prjname"_commands"
+metadata_name=$prjname"_metadata"
 flags_name=$prjname"_flags"
 	
 echo "  changing files name"
 mv main.tex $main_name".tex"
+mv beamer.tex $beamer_name".tex"
 mv mysettings.tex $settings_name".tex"
 mv mycommands.tex $commands_name".tex"
 mv myflags.tex $flags_name".tex"
+mv mymetadata.tex $metadata_name".tex"
 
 echo "  running sed to adjust inner references"
 for file in *.tex sections/*
 do
 	sed -i "s/main/$main_name/g" $file
+	sed -i "s/beamer/$beamer_name/g" $file
 	sed -i "s/mysettings/$settings_name/g" $file
 	sed -i "s/mycommands/$commands_name/g" $file
 	sed -i "s/myflags/$flags_name/g" $file
+	sed -i "s/mymetadata/$metadata_name/g" $file
 done
 
 echo "  cloning submodules"
 
 if git submodule status | grep -q cryptobib; then
-    echo "Error: cryptobib was previously installed in this git repo"
+    echo "Cryptobib was previously cloned in this git repo"
 else
     git submodule add https://github.com/cryptobib/export cryptobib
 fi
