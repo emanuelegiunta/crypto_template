@@ -1,12 +1,16 @@
 %!TeX root = main.tex
 %!TeX spellcheck = en_GB
 
-\newif\ifFullVersion		%full version
-\newif\ifComments			%comments visible
-\newif\ifTableOfContents	%table of contents
-\newif\ifAnonymous			%anonymous
+\newif\ifBeamer				% True for Beamer presentation/False for paper
+\newif\ifFullVersion		% full version
+\newif\ifComments			% comments visible
+\newif\ifTableOfContents	% table of contents
+\newif\ifAnonymous			% anonymous
+\newif\ifAbstract			% hide the abstract if false
 
+%\Beamertrue				% Keep this false by default
 %\FullVersiontrue
 \Commentstrue
 \TableOfContentstrue
 \Anonymoustrue
+\Abstracttrue

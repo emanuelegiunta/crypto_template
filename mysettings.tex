@@ -2,12 +2,24 @@
 % !TeX root = main.tex
 
 	%document class
-\ifFullVersion
-	\documentclass[11pt]{llncs}
-	\usepackage{fullpage}
+\ifBeamer
+	% Settings for Beamer
+	\documentclass{beamer}
+	\usetheme{Darmstadt}
+	
+	% Hide tables abstract ecc...
+	\TableOfContentsfalse
+	\Abstractfalse
+	\Anonymousfalse
 \else
-	\documentclass{llncs}
-	\pagestyle{plain}
+	% Settings for the actual paper
+	\ifFullVersion
+		\documentclass[11pt]{llncs}
+		\usepackage{fullpage}
+	\else
+		\documentclass{llncs}
+		\pagestyle{plain}
+	\fi
 \fi
 
 \usepackage[utf8]{inputenc}
@@ -53,31 +65,50 @@
 	events,			complexity,
 	asymptotics,	keys
 	]{cryptocode}
+	
+	% Define metadata commands
+\newcommand{\myauthor}[1]{
+	\ifAnonymous
+		\author{}
+	\else
+		\author{#1}
+	\fi}
+
+\newcommand{\myinstitute}[1]{
+	\ifAnonymous
+		\institute{}
+	\else
+		\institute{#1}
+	\fi}
 
 	% set how far in the sub[n]subsection the Table of Contents will go
-\setcounter{tocdepth}{2}
+\ifTableOfContents
+	\setcounter{tocdepth}{2}
+\fi
 
 	% Patch of the Toc Bug for llnc %
-\makeatletter
-\renewcommand*\l@section[2]
-{%
-	\ifnum \c@tocdepth >\z@
-	\addpenalty \@secpenalty
-	\addvspace {1.0em \@plus \p@ }%
-	\setlength \@tempdima {1.5em}%
-	\begingroup
-	\parindent \z@
-	\rightskip \@pnumwidth
-	\parfillskip -\@pnumwidth
-	\leavevmode \bfseries
-	\advance \leftskip \@tempdima
-	\hskip -\leftskip
-	#1\nobreak
-	\hfil
-	\nobreak
-	\hb@xt@ \@pnumwidth {\hss #2\kern -\p@ \kern \p@ }%
-	\par
-	\endgroup
-	\fi
-}
-\makeatother
+\ifBeamer \else
+	\makeatletter
+	\renewcommand*\l@section[2]
+	{%
+		\ifnum \c@tocdepth >\z@
+		\addpenalty \@secpenalty
+		\addvspace {1.0em \@plus \p@ }%
+		\setlength \@tempdima {1.5em}%
+		\begingroup
+		\parindent \z@
+		\rightskip \@pnumwidth
+		\parfillskip -\@pnumwidth
+		\leavevmode \bfseries
+		\advance \leftskip \@tempdima
+		\hskip -\leftskip
+		#1\nobreak
+		\hfil
+		\nobreak
+		\hb@xt@ \@pnumwidth {\hss #2\kern -\p@ \kern \p@ }%
+		\par
+		\endgroup
+		\fi
+	}
+	\makeatother
+\fi
