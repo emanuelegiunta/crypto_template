@@ -15,7 +15,7 @@ flags_name=$prjname"_flags"
 	
 echo "  changing files name"
 mv main.tex $main_name".tex"
-mv beamer.tex $beamer_name".tex"
+mv mybeamer.tex $beamer_name".tex"
 mv mysettings.tex $settings_name".tex"
 mv mycommands.tex $commands_name".tex"
 mv myflags.tex $flags_name".tex"
