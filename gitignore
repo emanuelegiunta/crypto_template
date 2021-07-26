@@ -275,8 +275,11 @@ TSWLatexianTemp**
 # Makeindex log files
 **.lpz
 
-
-
+# Images
+**.xcf
+**.png
+**.jpg
+**.jpeg
 
 
 
@@ -284,3 +287,5 @@ TSWLatexianTemp**
 
 #Edit - personal folder for related document ecc...
 _doc**
+
+

@@ -14,6 +14,7 @@ metadata_name=$prjname"_metadata"
 flags_name=$prjname"_flags"
 	
 echo "  changing files name"
+mv gitignore .gitignore
 mv main.tex $main_name".tex"
 mv mybeamer.tex $beamer_name".tex"
 mv mysettings.tex $settings_name".tex"
