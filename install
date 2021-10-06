@@ -1,11 +1,13 @@
 #!/bin/bash
 
-echo "Installing Script v0.1"
+# Initial alert message
+echo "Installing Script:"
 echo "Warning, this installing script is quite bad, non reversable, and may mess with other files in this folder. Before running it make sure only the repo files are in the current folder"
 echo ""
 echo "Insert project name:"
 read prjname
-
+	
+# Store the main project name. They all have the form $prjname_$function
 main_name=$prjname"_main"
 beamer_name=$prjname"_beamer"
 settings_name=$prjname"_settings"
@@ -14,7 +16,11 @@ metadata_name=$prjname"_metadata"
 flags_name=$prjname"_flags"
 	
 echo "  changing files name"
+
+# Hide unhidden files
 mv gitignore .gitignore
+
+# Rename projects files
 mv main.tex $main_name".tex"
 mv mybeamer.tex $beamer_name".tex"
 mv mysettings.tex $settings_name".tex"
@@ -22,6 +28,7 @@ mv mycommands.tex $commands_name".tex"
 mv myflags.tex $flags_name".tex"
 mv mymetadata.tex $metadata_name".tex"
 
+# Adjust references between renamed files
 echo "  running sed to adjust inner references"
 for file in *.tex sections/*
 do
@@ -33,6 +40,7 @@ do
 	sed -i "s/mymetadata/$metadata_name/g" $file
 done
 
+# Clone submodules
 echo "  cloning submodules"
 
 if git submodule status | grep -q cryptobib; then
@@ -43,4 +51,4 @@ fi
 
 echo "done"
 
-rm "install"
+rm install
