@@ -2,20 +2,25 @@
 % !TeX root = main.tex
 % EG - my personal command
 
-	%logic
-\newcommand*{\ra}{\: \Rightarrow \:}			%implication
-\newcommand*{\lra}{\: \Leftrightarrow \:}		%iff
+%==============================================================================%
+% Textstyle
 
-	%textstyle
+% Emanuele's Comment
 \newcommand{\EG}[1]{
 	\ifComments
 		\textcolor{blue}{(\textbf{EG: #1})}
-	\fi} 										%Emanuele's Comment
+	\fi}	
+				
+%Ignacio's Comment						
 \newcommand{\IC}[1]{
 	\ifComments
 		\textcolor{red}{(\textbf{IC: #1})}
-	\fi} 										%Ignacio's Comment
-\newcommand*{\cd}[1]{ \mathsf{#1} }				%sans serif mode, for code
+	\fi} 						
+
+% Sans-serif, for code/commands				
+\newcommand*{\cd}[1]{ \mathsf{#1} }	
+
+% Conditional text, full or short version only
 \newcommand{\fullorshort}[2]{					
 	\ifFullVersion%
 		#1%
@@ -26,55 +31,110 @@
 \newcommand{\fullversion}[1]{\fullorshort{#1}{}}
 \newcommand{\shortversion}[1]{\fullorshort{}{#1}}
 
-	%algebra
-\newcommand*{\trs}{\top}								%transpose of a vector, matrix
-\newcommand*{\vc}[1]{\mathbf{#1}}						%vectors
-\newcommand*{\Ker}{{\mathrm{Ker}}\,}					%kernell
-\renewcommand*{\Im}{{\mathrm{Im}}\,}					%image
-\renewcommand*{\ker}{\Ker}								%making \ker and \Ker synonims
 
-	%sets
-\newcommand*{\G}{\mathbb{G}}							%Group
-\newcommand*{\F}{\mathbb{F}}							%Field
-\newcommand*{\N}{\mathbb{N}}							%Natural Number
-\newcommand*{\range}[1]{{[#1]}}							%integer between 0 and n - 1
-	\newcommand*{\RSverbose}[3]{\cd{RS}_{{#1}, {#2}, {#3}}}	%Reed Solomon code (specifing the field)
-	\newcommand*{\RS}[2]{\cd{RS}_{{#1}, {#2}}}				%Reed Solomon code
+%==============================================================================%
+% Algebra
 
-	%operators & predicates
-\newcommand*{\ceq}{==}									%check equality
-\newcommand*{\rto}{\prescript{\$}{}{\to}}				%sample from a set, random return
-\newcommand*{\rgets}{\gets^{\$}}						%value returned involving randomness
-\renewcommand*{\sample}{\rgets}							%override of Cryptocode sample
-\newcommand*{\checkeq}{\stackrel{?}{=}}
-\newcommand*{\chequiv}{\stackrel{?}{\equiv}}
-\newcommand*{\checkless}{\stackrel{?}{<}}
-\newcommand*{\cheqless}{\stackrel{?}{\leq}}
+% Transpose of a vector, matrix
+\newcommand*{\trs}{\top}
 
-	%distances and weights
-\newcommand{\hd}{d}										%hamming distance
-\newcommand{\hw}[1]{\left\lVert#1\right\rVert}			%hamming weight
+% Vectors								
+\newcommand*{\vc}[1]{\mathbf{#1}}
 
-	%probability\events
-\renewcommand*{\prob}[1]{ \Pr \left[ #1 \right] }		%probability
+% Kernell and Image of linear maps
+\newcommand*{\Ker}{{\mathrm{Ker}}\,}
+\renewcommand*{\Im}{{\mathrm{Im}}\,}
+\renewcommand*{\ker}{\Ker}								
 
-	%parameters
-\renewcommand*{\sk}{\cd{sk}}							%secret key
-\renewcommand*{\pk}{\cd{pk}}							%public key
-\newcommand*{\msk}{\cd{msk}}							%master secret key
-\newcommand*{\mpk}{\cd{mpk}}							%master public key
-\newcommand*{\ppm}{\cd{pp}}								%public parameter
-\newcommand*{\spm}{\cd{sp}}								%secret parameter
-\newcommand*{\secp}{\lambda}							%security parameter
+% Sets
+%  N = Natural Numbers		Z = Integers
+%  G = Groups				F = Fields
+\newcommand*{\G}{\mathbb{G}}
+\newcommand*{\F}{\mathbb{F}}
+\newcommand*{\N}{\mathbb{N}}
 
-	%unit of measurement
+% Integer between 0 and n - 1
+\newcommand*{\range}[1]{{[#1]}}
+
+% RS-code
+%  Verbose:
+% 		#1 = Field, 
+%		#2 = Evaluation set, 
+%		#3 = Degree/Rate
+%  Standard: 
+%		#1 = Evaluation set,
+%		#2 = Degree/Rate
+\newcommand*{\RSverbose}[3]{\cd{RS}_{{#1}, {#2}, {#3}}}	
+\newcommand*{\RS}[2]{\cd{RS}_{{#1}, {#2}}}
+
+
+%==============================================================================%
+% Operators and Predicates
+
+% Check equality
+\newcommand*{\ceq}{==}
+
+% Logic
+\newcommand*{\ra}{\: \Rightarrow \:}
+\newcommand*{\lra}{\: \Leftrightarrow \:}
+
+% Sample/Return
+\newcommand*{\rto}{\prescript{\$}{}{\to}}
+\newcommand*{\rgets}{\gets^{\$}}
+\renewcommand*{\sample}{\rgets}
+
+
+%==============================================================================%
+% Miscellaneous
+
+% Hamming distance/Hamming weight
+\newcommand{\hd}{d}
+\newcommand{\hw}[1]{\left\lVert#1\right\rVert}
+
+% Probability
+\renewcommand*{\prob}[1]{ \Pr \left[ #1 \right] }
+
+
+%==============================================================================%
+% Cryptographic parameters
+
+% Secret/Public Key
+\renewcommand*{\sk}{\cd{sk}}
+\renewcommand*{\pk}{\cd{pk}}
+
+% Master Secret/Public Key
+\newcommand*{\msk}{\cd{msk}}
+\newcommand*{\mpk}{\cd{mpk}}
+
+% Secret/Public Parameters
+\newcommand*{\ppm}{\cd{pp}}
+\newcommand*{\spm}{\cd{sp}}
+
+% Security Parameter
+\newcommand*{\secp}{\lambda}
+
+
+%==============================================================================%
+% Unit of Measurement
+
 \newcommand*{\byte}{\mathrm{B}}
 \newcommand*{\KB}{\mathrm{KB}}
 \newcommand*{\MB}{\mathrm{MB}}
 \newcommand*{\GB}{\mathrm{GB}}
-	
-	%Wrong things that just work [use at your own risk]
-\newcommand*{\pcextraspace}{\pcskipln \\[-12px]}		%add inline space in cryptocode pseudocode
-\newcommand*{\prextraspace}{\\[-12px]}					%add inline space in cryptocode protocols
-\newcommand*{\midtall}{\phantom{\Big|} \!\!}			%forces higher brakets in equations
+
+
+%==============================================================================%
+% Wrong things that just work [use at your own risk]
+
+% Add inline space in cryptocode pseudocode
+\newcommand*{\pcextraspace}{\pcskipln \\[-12px]}	
+
+% Add inline space in cryptocode protocols
+\newcommand*{\prextraspace}{\\[-12px]}	
+
+% %forces higher brakets in equations
+\newcommand*{\midtall}{\phantom{\Big|} \!\!}			
+
+
+%==============================================================================%
 
