@@ -46,6 +46,7 @@ echo "  cloning submodules"
 if git submodule status | grep -q cryptobib; then
     echo "Cryptobib was previously cloned in this git repo"
 else
+    rmdir cryptobib
     git submodule add https://github.com/cryptobib/export cryptobib
 fi
 
