@@ -3,53 +3,92 @@
 # Initial alert message
 echo "Installing Script:"
 echo "Warning, this installing script is quite bad, non reversable, and may mess with other files in this folder. Before running it make sure only the repo files are in the current folder"
-echo ""
-echo "Insert project name:"
-read prjname
+echo "";
+echo "Insert project name:";
+read prjname;
+
 	
 # Store the main project name. They all have the form $prjname_$function
-main_name=$prjname"_main"
-beamer_name=$prjname"_beamer"
-settings_name=$prjname"_settings"
-commands_name=$prjname"_commands"
-metadata_name=$prjname"_metadata"
-flags_name=$prjname"_flags"
+main_name="main_"$prjname;
+beamer_name="beamer_"$prjname;
+settings_name="settings_"$prjname;
+commands_name="commands_"$prjname;
+metadata_name="metadata_"$prjname;
+flags_name="flags_"$prjname;
+bib_name="biblio_"$prjname;
 	
-echo "  changing files name"
+echo "  changing files name";
 
 # Hide unhidden files
-mv gitignore .gitignore
+mv gitignore .gitignore;
 
 # Rename projects files
-mv main.tex $main_name".tex"
-mv mybeamer.tex $beamer_name".tex"
-mv mysettings.tex $settings_name".tex"
-mv mycommands.tex $commands_name".tex"
-mv myflags.tex $flags_name".tex"
-mv mymetadata.tex $metadata_name".tex"
+mv main.tex $main_name".tex";
+mv beamer.tex $beamer_name".tex";
+cd settings
+	mv mysettings.tex $settings_name".tex";
+	mv mycommands.tex $commands_name".tex";
+	mv myflags.tex $flags_name".tex";
+	mv mymetadata.tex $metadata_name".tex";
+	mv mybibliography.bib $bib_name".bib";
+cd ..
+
 
 # Adjust references between renamed files
-echo "  running sed to adjust inner references"
-for file in *.tex sections/*
+echo "  running sed to adjust inner references";
+for file in *.tex sections/* settings/*
 do
-	sed -i "s/main/$main_name/g" $file
-	sed -i "s/mybeamer/$beamer_name/g" $file
-	sed -i "s/mysettings/$settings_name/g" $file
-	sed -i "s/mycommands/$commands_name/g" $file
-	sed -i "s/myflags/$flags_name/g" $file
-	sed -i "s/mymetadata/$metadata_name/g" $file
+	sed -i "s/main/$main_name/g" $file;
+	sed -i "s/mybeamer/$beamer_name/g" $file;
+	sed -i "s/mysettings/$settings_name/g" $file;
+	sed -i "s/mycommands/$commands_name/g" $file;
+	sed -i "s/myflags/$flags_name/g" $file;
+	sed -i "s/mymetadata/$metadata_name/g" $file;
+	sed -i "s/mybibliography/$bib_name/g" $file;
 done
 
 # Clone submodules
-echo "  cloning submodules"
+echo "  cloning submodules: Do you want to add Cryptobib? [Yn]:";
+read cryptobib_flag;
 
-if git submodule status | grep -q cryptobib; then
-    echo "Cryptobib was previously cloned in this git repo"
+if [ "$cryptobib_flag" != "${cryptobib_flag#[Yy]}" ];
+then
+	if git submodule status | grep -q cryptobib; 
+	then
+	    # Remove cryptobib and reinstall it
+	    git rm --force cryptobib/
+	fi
+
+	# remove possibile traces left in the .git folder
+	rm -rf .git/modules/cryptobib
+
+	# If a cryptobib folder is still out there, remove it
+	if [ -d  "./cryptobib" ];
+	then
+		rmdir cryptobib
+	fi
+
+	git submodule add https://github.com/cryptobib/export cryptobib
 else
-    rmdir cryptobib
-    git submodule add https://github.com/cryptobib/export cryptobib
+	# If cryptobib is not desired, remove any reference in tha main.tex
+	sed -i "s/cryptobib\/abbrev3,cryptobib\/crypto,//g" $main_name".tex"
 fi
 
-echo "done"
+# Leave the reset script (only used in debug)
+echo "  (Only for Debugs) Do you want to leave the clear script? [Yn]:";
+read reset_flag;
 
-rm install
+if [ "$reset_flag" != "${reset_flag#[Yy]}" ];
+then
+	# Do nothing
+	echo "  clear not removed"
+else
+	# Remove the clear script
+	echo "  removing clear"
+	rm clear
+fi
+
+rm install;
+rm LICENSE;
+
+echo "done";

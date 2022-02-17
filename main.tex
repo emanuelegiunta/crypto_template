@@ -1,42 +1,41 @@
 %!TeX spellcheck = en_GB
 
-	% Import Flags, Setting and Commands
-\input{myflags.tex}
-\input{mysettings.tex}
-\input{mycommands.tex}
-\input{mymetadata.tex}
+% Import Flags, Setting and Commands
+\input{settings/myflags.tex}
+\input{settings/mysettings.tex}
+\input{settings/mycommands.tex}
+\input{settings/mymetadata.tex}
 
 
 \begin{document}
 
-	%\maketitle compatibile with llncs and toc
+%	Maketitle [compatibile with llncs and toc]
 {\def\addcontentsline#1#2#3{}\maketitle}
 
 \shortversion{\vspace{-20pt}}
 
-%% Abstract
-\ifAbstract
-	\begin{abstract}
-		\input{sections/abstract.tex}
-	\end{abstract}
-\fi
+% 	Abstract
+\begin{abstract}
+	\input{sections/abstract.tex}
+\end{abstract}
 
-%% Table of Contents
+% 	Table of Contents
 \ifTableOfContents 
 	\tableofcontents
 	\newpage
 \fi
 
-%% Main body
+%==============================================================================%
+% Main body
 \section{Introduction}
 	\subsection{A short intro}
 	\input{sections/Introduction.tex}
 
-	%bibliography
+% Bibliography
 \bibliographystyle{alpha}
-\bibliography{cryptobib/abbrev3,cryptobib/crypto,others}
+\bibliography{cryptobib/abbrev3,cryptobib/crypto,settings/mybibliography}
 
-	%appendix
+% Appendix
 \appendix
 
 \end{document}

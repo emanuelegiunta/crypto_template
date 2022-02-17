@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Remove any file
+rm *
+rm .*
+
+# clear folders
+rm sections/*
+rm sections/.*
+rm settings/*
+rm settings/.*
+
+# reset the current git repo
+git checkout .
+
+# check the status of the current repo
+git status
