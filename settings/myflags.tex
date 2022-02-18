@@ -6,9 +6,44 @@
 \newif\ifComments			% comments visible
 \newif\ifTableOfContents	% table of contents
 \newif\ifAnonymous			% anonymous
+\newif\ifACM				% ACM format
+\newif\ifLNCS				% LNCS format
 
-%\Beamertrue				% Keep this false by default
+%==============================================================================%
+% FLAGS SETTINGS: modify only the variables that appear here!
+
+
 %\FullVersiontrue
 \Commentstrue
 \TableOfContentstrue
-\Anonymoustrue
+%\Anonymoustrue
+
+% STYLE FLAGS: exacly one of the following has to be uncommented
+
+%\ACMtrue
+\LNCStrue
+
+%==============================================================================%
+% Auto setting for the other flags
+
+% FV -> ToC + \neg Anon + LNCS + \neg ACM
+\ifFullVersion
+	% text hiding flags
+	\TableOfContentstrue
+	\Anonymousfalse
+	% style setting
+	\LNCStrue
+	\ACMfalse
+\fi
+
+% ACM & LNCS -> error.
+% \neg ACM & \neg LNCS -> error
+\ifACM
+	\ifLNCS
+		\PackageError{Template}{ACM and LNCS cannot both be true}{You should go the flag.tex file and decide which between ACM and LNCS should be true}
+	\fi
+\else
+	\ifLNCS \else
+		\PackageError{Template}{ACM and LNCS cannot both be false}{You should go the flag.tex file and decide which between ACM and LNCS should be true}
+	\fi
+\fi

@@ -8,22 +8,7 @@
 
 
 \begin{document}
-
-%	Maketitle [compatibile with llncs and toc]
-{\def\addcontentsline#1#2#3{}\maketitle}
-
-\shortversion{\vspace{-20pt}}
-
-% 	Abstract
-\begin{abstract}
-	\input{sections/abstract.tex}
-\end{abstract}
-
-% 	Table of Contents
-\ifTableOfContents 
-	\tableofcontents
-	\newpage
-\fi
+\MakeTitleAbstractAndToc{sections/abstract.tex}
 
 %==============================================================================%
 % Main body

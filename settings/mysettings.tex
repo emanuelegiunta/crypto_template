@@ -1,7 +1,8 @@
 % !TeX spellcheck = en_GB
 % !TeX root = main.tex
 
-	%document class
+%==============================================================================%
+% Document class
 \ifBeamer
 	% Settings for Beamer
 	\documentclass{beamer}
@@ -11,13 +12,23 @@
 	\TableOfContentsfalse
 	\Anonymousfalse
 \else
-	% Settings for the actual paper
+	% Full Version format. Note, for full version we just use LNCS
 	\ifFullVersion
 		\documentclass[11pt]{llncs}
 		\usepackage{fullpage}
 	\else
-		\documentclass{llncs}
-		\pagestyle{plain}
+		% Submission format:
+		
+		% LNCS format
+		\ifLNCS
+			\documentclass{llncs}
+			\pagestyle{plain}
+		\fi
+		
+		% ACM format
+		\ifACM
+			\documentclass[manuscript,nonacm,\ifAnonymous anonymous\fi]{acmart}
+		\fi	
 	\fi
 \fi
 
@@ -65,7 +76,8 @@
 	asymptotics,	keys
 	]{cryptocode}
 	
-	% Define metadata commands
+%==============================================================================%
+% Define metadata commands
 \newcommand{\myauthor}[1]{
 	\ifAnonymous
 		\author{}

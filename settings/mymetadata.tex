@@ -1,17 +1,39 @@
 %!TeX root = main.tex
 %!TeX spellcheck = en_GB
 
+% Currently Metadata is not internally adapted to be converted from LNCS to ACM
+%  and viceversa. Hence the only solution available is to input metadata twice.
+%  Take care that Authors, affiliations and mails matches in the two cases!
+
 \title{Insert Title Here}
 
 \date{}
 
-\myauthor{First Author\inst{1}, Second Author\inst{1,2}, Third Author\inst{2}}
+\ifLNCS
+	\myauthor{First Author\inst{1}, Second Author\inst{1,2}, Third Author\inst{2}}
+	
+	\myinstitute{
+		University of Region, Country.\\
+		\href{mailto:example@provider.com}{example@provider.com}
+	\and
+		University of Other Region, Other Country.\\
+		\href{mailto:other.example@otherprovider.com, last.one@otherprovider.com}{\{other.example, last.one\}@otherprovider.com}
+	}
+\fi
 
-\myinstitute{
-	University of Region, Country.\\
-	\href{mailto:example@provider.com}{example@provider.com}
-\and
-	University of Other Region, Other Country.\\
-	\href{mailto:other.example@otherprovider.com, last.one@otherprovider.com}{\{other.example, last.one\}@otherprovider.com}
-}
+\ifACM
+	\author{First Author}
+	\affiliation{University of Region, Country}
+	\email{example@provider.com}
+	
+	\author{Second Author}
+	\affiliation{University of Region, Country}
+	\affiliation{University of Other Region, Other Country}
+	\email{other.example@otherprovider}
+	
+	\author{Third Author}
+	\affiliation{University of Other Region, Other Country}
+	\email{last.one@otherprovider.com}
+\fi
+	
 	

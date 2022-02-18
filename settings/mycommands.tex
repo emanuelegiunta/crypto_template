@@ -52,7 +52,11 @@
 % Sets
 %  N = Natural Numbers		Z = Integers
 %  G = Groups				F = Fields
-\newcommand*{\G}{\mathbb{G}}
+\ifACM
+	\renewcommand*{\G}{\mathbb{G}}
+\else
+	\newcommand*{\G}{\mathbb{G}}
+\fi
 \newcommand*{\F}{\mathbb{F}}
 \newcommand*{\N}{\mathbb{N}}
 
@@ -144,4 +148,40 @@
 
 
 %==============================================================================%
+% MACROS
+\newcommand{\lncsmaketitle}{
+	{\def\addcontentsline##1##2##3{}\maketitle}
+}
 
+\newcommand{\MakeTitleAbstractAndToc}[1]{
+	\ifLNCS
+		\lncsmaketitle
+		
+		\shortversion{\vspace{-20pt}}
+		
+		% 	Abstract
+		\begin{abstract}
+			\input{#1}
+		\end{abstract}
+		
+		% 	Table of Contents
+		\ifTableOfContents 
+			\tableofcontents
+			\newpage
+		\fi
+	\fi
+	\ifACM
+		%	Abstract
+		\begin{abstract}
+			\input{#1}
+		\end{abstract}
+		
+		\maketitle
+		
+		% 	Table of Contents
+		\ifTableOfContents 
+			\tableofcontents
+			\newpage
+		\fi
+	\fi
+}
