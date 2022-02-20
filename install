@@ -47,6 +47,20 @@ do
 	sed -i "s/mybibliography/$bib_name/g" $file;
 done
 
+# Leave the reset script (only used in debug)
+echo "  Do you want to install in debug mode? [Yn]:";
+read debug_flag;
+
+if [ "$debug_flag" != "${debug_flag#[Yy]}" ];
+then
+	# Do nothing
+	echo "  Debug mode: clear command available"
+else
+	# Remove the clear script
+	echo "  Installation performed in non-debug mode"
+	rm clear
+fi
+
 # Clone submodules
 echo "  cloning submodules: Do you want to add Cryptobib? [Yn]:";
 read cryptobib_flag;
@@ -74,21 +88,23 @@ else
 	sed -i "s/cryptobib\/abbrev3,cryptobib\/crypto,//g" $main_name".tex"
 fi
 
-# Leave the reset script (only used in debug)
-echo "  (Only for Debugs) Do you want to leave the clear script? [Yn]:";
-read reset_flag;
-
-if [ "$reset_flag" != "${reset_flag#[Yy]}" ];
-then
-	# Do nothing
-	echo "  clear not removed"
-else
-	# Remove the clear script
-	echo "  removing clear"
-	rm clear
-fi
-
 rm install;
 rm LICENSE;
+
+# Link to existing folder
+#  NOTE: this HAS to be the last step, since we commit to changes done
+echo "  Do you want to push into existing (empty) repository? [Yn]";
+read push_flag;
+
+if [ "$push_flag" != "${push_flag#[Yy]}" ];
+then
+	echo "  Enter repository url:"
+	read remote_url;
+
+	# Squash history and push it to the new repo
+	git reset --soft 65dc3860a448685cf1455ebbae8d1e0171493456;
+	git commit --amend -m "Initial Commit";
+	git push -u $remote_url;
+fi
 
 echo "done";
