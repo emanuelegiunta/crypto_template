@@ -1,8 +1,10 @@
 % !TeX spellcheck = en_GB
 % !TeX root = main.tex
 
+
 %==============================================================================%
-% Document class
+% DOCUMENT CLASS
+
 \ifBeamer
 	% Settings for Beamer
 	\documentclass{beamer}
@@ -32,6 +34,10 @@
 	\fi
 \fi
 
+
+%==============================================================================%
+% PACKAGES 
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
@@ -44,7 +50,8 @@
 \usepackage{
 	tikz, 		float,
 	placeins, 	graphicx,
-	graphics,	xcolor} 
+	graphics,	xcolor,
+	pgfplots} 
 	
 	%text formatting
 \usepackage{
@@ -55,14 +62,8 @@
 \usepackage{
 	breakcites,	enumerate,
 	array,		comment}
-
 	
-\usepackage[]{hyperref}
-%\hypersetup{
-%	colorlinks
-%	%allcolors=black
-%	%urlcolor=black
-%}
+\usepackage{hyperref}
 
 	%cryptocode
 \usepackage[
@@ -75,29 +76,58 @@
 	events,			complexity,
 	asymptotics,	keys
 	]{cryptocode}
+
+
+%==============================================================================%
+% STYLE SETTINGS
+%  pgfplot settings
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{
+	% Grid settings
+	%  Only major grids with dotted lines
+	grid = major,
+	major grid style={dotted, gray},
+	%
+	% Axis lines
+	%  Only bottom x and left y axes are shown.
+	axis y line* = left,
+	axis x line* = bottom,
+	compat = 1.3,			% Recommended in the docs
+	%
+	% Markers
+	%  Uncomment the following to remove markers
+	%no markers,
+	%
+	% Legend placement
+	%  upper left corner, 
+	legend style = {
+		at = {(0.05,0.95)}, 
+		anchor = north west,
+		cells = {align=center},
+		},
+	%	
+	/pgfplots/group/.cd,
+    horizontal sep= 1.5cm
+}
+
+% Tikz settings (some of them are just for plots)
+\tikzset{
+	% Mark style
+	%  No modification here
+	every mark/.append style = {
+		scale = 1,
+	}
+}
+
 	
 %==============================================================================%
-% Define metadata commands
-\newcommand{\myauthor}[1]{
-	\ifAnonymous
-		\author{}
-	\else
-		\author{#1}
-	\fi}
-
-\newcommand{\myinstitute}[1]{
-	\ifAnonymous
-		\institute{}
-	\else
-		\institute{#1}
-	\fi}
-
-	% set how far in the sub[n]subsection the Table of Contents will go
+% TABLE OF CONTENTS
+%  Set at which level of sub...subsection the toc should stop
 \ifTableOfContents
 	\setcounter{tocdepth}{2}
 \fi
 
-	% Patch of the Toc Bug for llnc %
+%  Patch ToC for LNCS
 \ifBeamer \else
 	\makeatletter
 	\renewcommand*\l@section[2]
@@ -123,3 +153,21 @@
 	}
 	\makeatother
 \fi
+
+
+%==============================================================================%
+% METADATA
+%  conditional metadata for LNCS. Do not modify.
+\newcommand{\myauthor}[1]{
+	\ifAnonymous
+		\author{}
+	\else
+		\author{#1}
+	\fi}
+
+\newcommand{\myinstitute}[1]{
+	\ifAnonymous
+		\institute{}
+	\else
+		\institute{#1}
+	\fi}

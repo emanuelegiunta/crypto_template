@@ -1,4 +1,16 @@
 % !TeX spellcheck = en_GB
-% !TeX root = ../main.tex
+% !TeX root = ../main_prova.tex
 
-An introduction.
+An introduction. Check out Fig.~\ref{fig:example}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[ylabel={$y$ values}, xlabel={$x$ values}]
+		\addplot[color=red]{exp(x)};
+		\addlegendentry{$e^x$};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{The exponential function}
+	\label{fig:example}
+\end{figure}
