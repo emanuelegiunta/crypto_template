@@ -8,7 +8,7 @@
 \ifBeamer
 	% Settings for Beamer
 	\documentclass{beamer}
-	\usetheme{Darmstadt}
+	\usetheme{metropolis}
 	
 	% Hide tables abstract ecc...
 	\TableOfContentsfalse
@@ -29,7 +29,11 @@
 		
 		% ACM format
 		\ifACM
-			\documentclass[manuscript,nonacm,\ifAnonymous anonymous\fi]{acmart}
+			\documentclass[
+				manuscript,
+				nonacm,
+				\ifAnonymous anonymous\fi
+				]{acmart}
 		\fi	
 	\fi
 \fi
