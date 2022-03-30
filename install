@@ -103,6 +103,7 @@ then
 
 	# Squash history and push it to the new repo
 	git reset --soft 65dc3860a448685cf1455ebbae8d1e0171493456;
+	git add .
 	git commit --amend -m "Initial Commit";
 	git push -u $remote_url;
 fi
