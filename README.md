@@ -1,17 +1,17 @@
 # Crypto Template
-Quick and simple template for cryptographic papers, formatted either in LNCS or ACM format, available on [GitHub](https://github.com/emanuelegiunta/crypto_template)
+Quick and simple template for cryptographic papers, formatted either in LNCS or ACM format, available on [GitHub](https://github.com/emanuelegiunta/crypto_template), originally forked from [Matteo's template](https://github.com/matteocam/lncs-latex-template)
 
 ## Installation
-In order to use the following template into a empty project/shared repository name `<prj_name>`, first clone this git repo into a local repository and then execute the `install` script
+In order to use the following template into a empty project/shared repository named `<prj_name>`, first clone this git repo into a local repository and then execute the `install` script
 ```
     $ git clone git@github.com:emanuelegiunta/crypto_template.git <prj_name>
     $ cd <prj_name>
     $ ./install
 ```
 The installation procedure will ask for a project name (usage of space ` ` is not supported, please use `_` instead) and whether some submodules are required through yes or no questions. Debug mode should only be used for testing purposes.
-Finally to link the resuling local repository to your global/shared one, provide an SSH link to the (empty) remote repository you wish to store your project in.
+Finally to link the resulting local repository to your global/shared one, provide an SSH link to the (empty) remote repository you wish to store your project in.
 
-**For Advanced Users**: If you wish to perform changes before the initial commit, you can refuse the auto-push. Be aware though that pushing directly would include this project's history, which is likely something undesired. A way to remove it is to soft-reset to root and then commit after the installation though the following commands
+**For Advanced Users**: If you wish to perform changes before the initial commit, you can refuse the auto-push. Be aware though that pushing directly would include this project's history, which is likely undesired. A way to remove it is to soft-reset to root and then commit after the installation through the following commands
 ```
     $ git reset --soft <commit_hash>
     $ git commit --amend -m "<your_first_commit_message>"

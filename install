@@ -90,6 +90,7 @@ fi
 
 rm install;
 rm LICENSE;
+rm README.md;
 
 # Link to existing folder
 #  NOTE: this HAS to be the last step, since we commit to changes done
