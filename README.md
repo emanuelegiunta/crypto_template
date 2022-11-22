@@ -16,6 +16,10 @@ Finally to link the resulting local repository to your global/shared one, provid
     $ git reset --soft <commit_hash>
     $ git commit --amend -m "<your_first_commit_message>"
 ```
+You will also have to manually set your new repo as remote. This is done through the command
+```
+    $ git remove set-url origin <link_of_your_repo>
+```
 
 ## Structure
 This template is designed to keep logically indipendendent portions of the document in separate files to minimize conflicts and keep a cleaner commit history. More secifically each project is divided into the following files
