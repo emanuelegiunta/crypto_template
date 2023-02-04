@@ -175,3 +175,16 @@
 	\else
 		\institute{#1}
 	\fi}
+
+
+%==============================================================================%
+% Proof Patch
+%  Optional term replace the "proof" title entirely, as opposed to being put in
+%  brakets. Example "Proof (of Theorem 5)" -> "Proof of Theorem 5"
+
+\ifBeamer \else
+	\makeatletter
+	\renewcommand{\@Opargbegintheorem}[4]{%
+	  #4\trivlist\item[\hskip\labelsep{#3#2\@thmcounterend}]}
+	\makeatother
+\fi
