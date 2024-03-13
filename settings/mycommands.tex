@@ -6,22 +6,22 @@
 % Textstyle
 
 % Emanuele's Comment
-\newcommand{\EG}[1]{
-	\ifComments
-		\textcolor{blue}{(\textbf{EG: #1})}
+\newcommand{\EG}[1]{%
+	\ifComments%
+		\textcolor{blue}{(\textbf{EG: #1})}%
 	\fi}	
 				
 %Ignacio's Comment						
-\newcommand{\IC}[1]{
-	\ifComments
-		\textcolor{red}{(\textbf{IC: #1})}
+\newcommand{\IC}[1]{%
+	\ifComments%
+		\textcolor{red}{(\textbf{IC: #1})}%
 	\fi} 						
 
 % Sans-serif, for code/commands				
 \newcommand*{\cd}[1]{ \mathsf{#1} }	
 
 % Conditional text, full or short version only
-\newcommand{\fullorshort}[2]{					
+\newcommand{\fullorshort}[2]{%				
 	\ifFullVersion%
 		#1%
 	\else%
