@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Initial alert message
-echo "Installing Script:"
-echo "Warning, this installing script is quite bad, non reversable, and may mess with other files in this folder. Before running it make sure only the repo files are in the current folder"
+echo "Installing Script:";
+echo "Warning, this installing script is quite bad, non reversible, and may mess with other files in this folder. Before running it make sure only the repo files are in the current folder";
 echo "";
 echo "Insert project name:";
 read prjname;
-
 	
 # Store the main project name. They all have the form $prjname_$function
 main_name="main_"$prjname;
