@@ -54,7 +54,7 @@
 	tikz, 		float,
 	placeins, 	graphicx,
 	graphics,	xcolor,
-	pgfplots} 
+	pgfplots,	fontawesome} 
 	
 	%text formatting
 \usepackage{
@@ -187,3 +187,10 @@
 	  #4\trivlist\item[\hskip\labelsep{#3#2\@thmcounterend}]}
 	\makeatother
 \fi
+
+%==============================================================================%
+% Proof Patch 2
+% Undefine \proof and \endproof as per llncs 
+% class to use amsthm's one, with \qedhere
+\let\proof\relax\let\endproof\relax
+\usepackage{amsthm}
